@@ -1,4 +1,4 @@
-package ui.component
+package ui.component.input
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -12,7 +12,7 @@ fun DropDown(
     items: Map<UUID, String>,
     value: String,
     onSelect: (id: UUID) -> Unit,
-    label: @Composable (() -> Unit)?,
+    label: @Composable (() -> Unit)? = null,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
