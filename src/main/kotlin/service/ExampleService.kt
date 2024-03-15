@@ -7,10 +7,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 object ExampleService {
     val database = Database.connect(
-        "jdbc:mysql://localhost:3306/regio",
+        "jdbc:mysql://localhost:3306/mysql",
         driver = "com.mysql.cj.jdbc.Driver",
         user = "root",
-        password = "password"
     )
 
     init {
