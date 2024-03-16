@@ -12,6 +12,7 @@ robocopy "%~dp0." "%USERPROFILE%\Desktop\%folderName%\source" /E /XD ".gradle" "
 
 :: Copy README.md to the created folder
 copy "README.md" "%USERPROFILE%\Desktop\%folderName%"
+copy "competitor.json" "%USERPROFILE%\Desktop\%folderName%"
 
 :: Zip the folder
 powershell -Command "Compress-Archive -Path '%USERPROFILE%\Desktop\%folderName%' -DestinationPath '%USERPROFILE%\Desktop\%folderName%.zip'"
