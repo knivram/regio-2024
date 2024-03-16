@@ -2,6 +2,7 @@ package ui.screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -50,7 +51,7 @@ data class AnalyzeScreen(
                     Column {
                         Text("Criterion")
                         LazyColumn {
-                            items(analyze.criterionRepo.getAll()) {
+                            items(analyze.criterionRepo.getAll().sortedBy { it.id }) {
                                 Row {
                                     Text(it.name)
                                     Spacer(modifier = Modifier.width(5.dp))
@@ -59,10 +60,22 @@ data class AnalyzeScreen(
                             }
                         }
                     }
+                    Spacer(Modifier.width(16.dp))
+                    LazyRow {
+                        items(analyze.variantRepo.getAll().sortedBy { it.name }) {variant ->
+                            Column {
+                                Text(variant.name)
+                                LazyColumn {
+                                    items(variant.properties.sortedBy { it.criterionId }) { property ->
+                                        Text(property.value)
+                                    }
+                                }
+                            }
+                            Spacer(Modifier.width(16.dp))
+                        }
+                    }
                 }
-
             }
         }
     }
-
 }
