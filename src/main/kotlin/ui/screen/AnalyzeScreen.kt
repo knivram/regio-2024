@@ -32,10 +32,18 @@ data class AnalyzeScreen(
             } else {
                 Text(analyze.name, style = MaterialTheme.typography.h3)
 
-                Button(
-                    onClick = {navigator.push(AddCriterionScreen(analyzeId))}
-                ) {
-                    Text("New Criterion")
+                Row {
+                    Button(
+                        onClick = {navigator.push(AddCriterionScreen(analyzeId))}
+                    ) {
+                        Text("New Criterion")
+                    }
+                    Button(
+                        onClick = {navigator.push(AddVariantScreen(analyzeId))}
+                    ) {
+                        Text("New Variant")
+                    }
+
                 }
 
                 Row {
